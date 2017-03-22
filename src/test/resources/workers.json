@@ -1,0 +1,30 @@
+[
+  {
+    "topic": "some_topic_one",
+    "worker_factory": "com.xxx.OneFactory",
+    "threads": 1,
+    "consumer": "path-worker",
+    "consumer_group": "product_one",
+    "log_only": [],
+    "max_failures": 1000
+  },
+  {
+    "topic": "some_topic_two",
+    "worker_factory": "com.xxx.TwoFactory",
+    "threads": 2,
+    "consumer": "path-worker",
+    "consumer_group": "product_two",
+    "log_only": [],
+    "max_failures": 1000
+  },
+  {
+    "topic": "some_topic_Three",
+    "worker_factory": "com.xxx.ThreeFactory",
+    "threads": 3,
+    "consumer": "path-worker",
+    "consumer_group": "product_Three",
+    "log_only": [],
+    "max_failures": 1000
+  }
+]
+
