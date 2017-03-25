@@ -8,6 +8,7 @@ import java.io.UnsupportedEncodingException;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 public class ConfigParserTest {
 
@@ -23,7 +24,7 @@ public class ConfigParserTest {
 
         assertEquals("workers.json", definitions[0].getFilePath());
 
-        assertEquals("json", definitions[0].getReplacer().getReplacerList().get(0).getType());
+        assertTrue(definitions[0].getReplacer().get("json") != null);
 
     }
 }

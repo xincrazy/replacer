@@ -2,23 +2,30 @@
   {
     "filePath": "workers.json",
     "replacer": {
-      "json": [
-        {
-          "jsonPath": "$.[?(@.topic == 'some_topic_one')].threads",
-          "value": 8
-        }
-      ]
+      "json": {
+        "config": {
+          "pretty": false
+        },
+        "items" : [
+          {
+            "jsonPath": "$.[?(@.topic == 'some_topic_one')].threads",
+            "value": 8
+          }
+        ]
+      }
     }
   },
   {
     "filePath": "producer.properties",
     "replacer": {
-      "property": [
-        {
-          "key": "bootstrap.servers",
-          "value": "127.0.0.1:9092"
-        }
-      ]
+      "property": {
+        "items": [
+          {
+            "key": "bootstrap.servers",
+            "value": "127.0.0.1:9092"
+          }
+        ]
+      }
     }
   }
 ]

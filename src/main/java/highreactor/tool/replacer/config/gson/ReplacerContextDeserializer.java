@@ -4,20 +4,20 @@ import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
-import highreactor.tool.replacer.config.Replacer;
-import highreactor.tool.replacer.config.ReplacerContext;
+import highreactor.tool.replacer.replacer.BaseReplacer;
 
 import java.lang.reflect.Type;
+import java.util.Map;
 
-import static highreactor.tool.replacer.config.SupportedReplacerHelper.getItemArrayClass;
-import static java.util.stream.Collectors.toList;
+import static highreactor.tool.replacer.internal.SupportReplacer.getReplacer;
+import static java.util.stream.Collectors.toMap;
 
-public class ReplacerContextDeserializer implements JsonDeserializer<ReplacerContext> {
-    public ReplacerContext deserialize(JsonElement element, Type currentType, JsonDeserializationContext context) throws JsonParseException {
-        return new ReplacerContext(element.getAsJsonObject().entrySet().stream().map(entry -> {
-            String type = entry.getKey();
-            Class item = getItemArrayClass(type);
-            return new Replacer(type, context.deserialize(entry.getValue(), item));
-        }).collect(toList()));
+public class ReplacerContextDeserializer implements JsonDeserializer<Map<String, BaseReplacer>> {
+    public Map<String, BaseReplacer> deserialize(JsonElement element, Type currentType, JsonDeserializationContext context) throws JsonParseException {
+        return element.getAsJsonObject().entrySet().stream().collect(
+            toMap(Map.Entry::getKey,
+                it -> ((BaseReplacer)context.deserialize(it.getValue(), getReplacer(it.getKey()).getReplacerType())).init()
+            )
+        );
     }
 }

@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class PropertiesReplaceItem extends IReplaceItem {
+public class PropertiesReplaceItem {
     private String key;
     private String value;
 }
