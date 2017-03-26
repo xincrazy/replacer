@@ -1,6 +1,7 @@
 package highreactor.tool.replacer.provider;
 
 import highreactor.tool.replacer.internal.SupportReplacer;
+import highreactor.tool.replacer.processor.IReplacerWorker;
 import highreactor.tool.replacer.processor.PropertiesWorker;
 import highreactor.tool.replacer.replacer.BaseReplacer;
 import highreactor.tool.replacer.replacer.PropertyReplacer;
@@ -29,7 +30,7 @@ public class PropertyProvider implements IReplacerProvider{
 
     @Override
     @SneakyThrows
-    public <T> T buildProcessor(URL filePath, BaseReplacer replacer) {
+    public <T extends IReplacerWorker> T buildWorker(URL filePath, BaseReplacer replacer) {
         FileBasedConfigurationBuilder<FileBasedConfiguration> builder = new FileBasedConfigurationBuilder<FileBasedConfiguration>(
             PropertiesConfiguration.class
         ).configure(new Parameters().properties().setFile(new File(filePath.toURI())));

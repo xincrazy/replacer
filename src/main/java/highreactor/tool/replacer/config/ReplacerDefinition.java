@@ -12,5 +12,6 @@ import java.util.Map;
 @AllArgsConstructor
 public class ReplacerDefinition {
     private String filePath;
+    private String savePath;
     private Map<String, BaseReplacer> replacer;
 }

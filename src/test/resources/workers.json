@@ -2,7 +2,7 @@
   {
     "topic": "some_topic_one",
     "worker_factory": "com.xxx.OneFactory",
-    "threads": 1,
+    "threads": 8,
     "consumer": "path-worker",
     "consumer_group": "product_one",
     "log_only": [],
@@ -27,4 +27,3 @@
     "max_failures": 1000
   }
 ]
-

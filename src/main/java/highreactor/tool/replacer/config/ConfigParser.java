@@ -4,7 +4,9 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.reflect.TypeToken;
+import com.jayway.jsonpath.Configuration;
 import com.jayway.jsonpath.JsonPath;
+import highreactor.tool.replacer.config.gson.GsonConfiguration;
 import highreactor.tool.replacer.config.gson.ReplacerContextDeserializer;
 import highreactor.tool.replacer.replacer.BaseReplacer;
 
@@ -16,6 +18,12 @@ public class ConfigParser {
         .registerTypeAdapter(new TypeToken<Map<String, BaseReplacer>>(){}.getType(), new ReplacerContextDeserializer())
         .registerTypeAdapter(JsonPath.class, (JsonDeserializer<JsonPath>) (json, typeOfT, context) -> JsonPath.compile(json.getAsString()))
         .create();
+
+    static {
+        //TODO remove shit
+        Configuration.setDefaults(new GsonConfiguration());
+
+    }
 
     public static ReplacerDefinition[] parse(Reader reader) {
         return gson.fromJson(reader, ReplacerDefinition[].class);

@@ -1,5 +1,6 @@
 package highreactor.tool.replacer.provider;
 
+import highreactor.tool.replacer.processor.IReplacerWorker;
 import highreactor.tool.replacer.replacer.BaseReplacer;
 
 import java.lang.reflect.Type;
@@ -9,5 +10,5 @@ public interface IReplacerProvider {
 
     Type getReplacerType();
 
-    <T> T buildProcessor(URL filePath, BaseReplacer replacer);
+    <T extends IReplacerWorker> T buildWorker(URL filePath, BaseReplacer replacer);
 }

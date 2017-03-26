@@ -2,6 +2,7 @@ package highreactor.tool.replacer.provider;
 
 import com.jayway.jsonpath.JsonPath;
 import highreactor.tool.replacer.internal.SupportReplacer;
+import highreactor.tool.replacer.processor.IReplacerWorker;
 import highreactor.tool.replacer.processor.JsonPathWorker;
 import highreactor.tool.replacer.replacer.BaseReplacer;
 import highreactor.tool.replacer.replacer.JsonPathReplacer;
@@ -26,7 +27,7 @@ public class JsonPathProvider implements IReplacerProvider{
 
     @Override
     @SneakyThrows
-    public <T> T buildProcessor(URL filePath, BaseReplacer replacer) {
+    public <T extends IReplacerWorker> T buildWorker(URL filePath, BaseReplacer replacer) {
         return (T)new JsonPathWorker(JsonPath.parse(new File(filePath.toURI())), (JsonPathReplacer) replacer);
     }
 
