@@ -1,28 +1,41 @@
 [
   {
-    "filePath": "workers.json",
+    "filePath": "src/test/resources/workers.json",
     "replacer": {
       "json": {
         "config": {
-          "pretty": false
+          "pretty": true
         },
-        "items" : [
+        "items": [
           {
             "jsonPath": "$.[?(@.topic == 'some_topic_one')].threads",
-            "value": 8
+            "value": 7
           }
         ]
       }
     }
   },
   {
-    "filePath": "producer.properties",
+    "filePath": "src/test/resources/producer.properties",
     "replacer": {
       "property": {
         "items": [
           {
             "key": "bootstrap.servers",
-            "value": "127.0.0.1:9092"
+            "value": "127.0.0.2:9092"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "filePath": "src/test/resources/test.xml",
+    "replacer": {
+      "xml": {
+        "items": [
+          {
+            "xPath": "//p1[@id='222']/name",
+            "value": "acv"
           }
         ]
       }

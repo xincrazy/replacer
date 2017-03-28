@@ -56,6 +56,11 @@
             <artifactId>logback-core</artifactId>
             <version>1.1.2</version>
         </dependency>
+        <dependency>
+            <groupId>org.jooq</groupId>
+            <artifactId>joox</artifactId>
+            <version>1.4.0</version>
+        </dependency>
 
         <!-- test -->
         <dependency>
